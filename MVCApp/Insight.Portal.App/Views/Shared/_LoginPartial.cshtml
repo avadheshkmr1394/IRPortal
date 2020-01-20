@@ -1,0 +1,278 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    string userName = User.Identity.GetUserName();
+    string gravatarUrl = "http://www.gravatar.com/avatar";
+    if (!string.IsNullOrWhiteSpace(userName))
+    {
+        System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
+        byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes($"{userName}@insightresults.com");
+        byte[] hash = md5.ComputeHash(inputBytes);
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        foreach (var t in hash){sb.Append(t.ToString("X2"));}
+        gravatarUrl = $"https://secure.gravatar.com/avatar/{sb.ToString().ToLower()}?s=50&d=identicon";
+    }
+}
+<style>
+    .dropdown-messages {
+        padding: 10px 10px 10px 10px;
+    }
+
+    .dropdown-menu {
+        border: medium none;
+        border-radius: 3px !important;
+        box-shadow: 0 0 3px rgba(86, 96, 117, 0.7);
+        float: left;
+        font-size: 12px;
+        left: 0;
+        list-style: none outside none;
+        position: absolute;
+        top: 30px;
+        text-shadow: none;
+        z-index: 1000;
+    }
+
+    .count-info .label {
+        line-height: 12px;
+        padding: 2px 5px;
+        position: absolute;
+        right: 4px;
+        top: 6px;
+    }
+
+    .dropdown-messages {
+        width: 350px;
+        min-width: 0;
+    }
+
+    .truncate {
+        display: inline-block;
+        width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .img-thumbnail {
+        padding: 0 !important;
+    }
+</style>
+<script>
+    /*!
+         * JavaScript Cookie v2.1.2
+         * https://github.com/js-cookie/js-cookie
+         *
+         * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+         * Released under the MIT license
+         */
+    ; (function (factory) {
+        if (typeof define === 'function' && define.amd) {
+            define(factory);
+        } else if (typeof exports === 'object') {
+            module.exports = factory();
+        } else {
+            var OldCookies = window.Cookies;
+            var api = window.Cookies = factory();
+            api.noConflict = function () {
+                window.Cookies = OldCookies;
+                return api;
+            };
+        }
+    }(function () {
+        function extend() {
+            var i = 0;
+            var result = {};
+            for (; i < arguments.length; i++) {
+                var attributes = arguments[i];
+                for (var key in attributes) {
+                    result[key] = attributes[key];
+                }
+            }
+            return result;
+        }
+
+        function init(converter) {
+            function api(key, value, attributes) {
+                var result;
+                if (typeof document === 'undefined') {
+                    return;
+                }
+
+                // Write
+
+                if (arguments.length > 1) {
+                    attributes = extend({
+                        path: '/'
+                    }, api.defaults, attributes);
+
+                    if (typeof attributes.expires === 'number') {
+                        var expires = new Date();
+                        expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+                        attributes.expires = expires;
+                    }
+
+                    try {
+                        result = JSON.stringify(value);
+                        if (/^[\{\[]/.test(result)) {
+                            value = result;
+                        }
+                    } catch (e) { }
+
+                    if (!converter.write) {
+                        value = encodeURIComponent(String(value))
+                            .replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+                    } else {
+                        value = converter.write(value, key);
+                    }
+
+                    key = encodeURIComponent(String(key));
+                    key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+                    key = key.replace(/[\(\)]/g, escape);
+
+                    return (document.cookie = [
+                        key, '=', value,
+                        attributes.expires && '; expires=' + attributes.expires.toUTCString(), // use expires attribute, max-age is not supported by IE
+                        attributes.path && '; path=' + attributes.path,
+                        attributes.domain && '; domain=' + attributes.domain,
+                        attributes.secure ? '; secure' : ''
+                    ].join(''));
+                }
+
+                // Read
+
+                if (!key) {
+                    result = {};
+                }
+
+                // To prevent the for loop in the first place assign an empty array
+                // in case there are no cookies at all. Also prevents odd result when
+                // calling "get()"
+                var cookies = document.cookie ? document.cookie.split('; ') : [];
+                var rdecode = /(%[0-9A-Z]{2})+/g;
+                var i = 0;
+
+                for (; i < cookies.length; i++) {
+                    var parts = cookies[i].split('=');
+                    var cookie = parts.slice(1).join('=');
+
+                    if (cookie.charAt(0) === '"') {
+                        cookie = cookie.slice(1, -1);
+                    }
+
+                    try {
+                        var name = parts[0].replace(rdecode, decodeURIComponent);
+                        cookie = converter.read ?
+                            converter.read(cookie, name) : converter(cookie, name) ||
+                            cookie.replace(rdecode, decodeURIComponent);
+
+                        if (this.json) {
+                            try {
+                                cookie = JSON.parse(cookie);
+                            } catch (e) { }
+                        }
+
+                        if (key === name) {
+                            result = cookie;
+                            break;
+                        }
+
+                        if (!key) {
+                            result[name] = cookie;
+                        }
+                    } catch (e) { }
+                }
+
+                return result;
+            }
+
+            api.set = api;
+            api.get = function (key) {
+                return api(key);
+            };
+            api.getJSON = function () {
+                return api.apply({
+                    json: true
+                }, [].slice.call(arguments));
+            };
+            api.defaults = {};
+
+            api.remove = function (key, attributes) {
+                api(key, '', extend(attributes, {
+                    expires: -1
+                }));
+            };
+
+            api.withConverter = init;
+
+            return api;
+        }
+
+        return init(function () { });
+    }));
+</script>
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul id="loginMenu" class="nav navbar-nav navbar-right">
+            <li class="dropdown" style="position: absolute;margin-left: -58px; display: none;" id="notification">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" aria-expanded="true"><i class="fa fa-bell"></i></a>
+            </li>
+            <script id="notificationTemplate" type="text/x-jquery-tmpl">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" aria-expanded="true"><i class="fa fa-bell"></i>  <span class="label label-warning">{{>Count}}</span></a>
+                <ul class="dropdown-menu dropdown-messages">
+                    {{for Notifications}}
+                    <li>
+                        <div class="dropdown-messages-box">
+                            <a href="profile.html" class="pull-left">
+                                <img class="circularImage" src="/Images/photos/{{>reporterLoginName}}.png" height="40" title="Reported by: {{:createdByLogin}}" />
+                            </a>
+                            <div class="media-body">
+                                <small class="pull-right">{{:~timeDuration(createdOn)}}</small>
+                                {{:activityName}}<strong>{{:createdByLogin}}</strong><br>
+                                <span class="truncate" title="{{:entityName}}">
+                                    <span class="ir-task-number ir-cursor-hand"> {{:entityId}}</span> {{:entityName}}
+                                </span> <br />
+                                <small class="text-muted">{{:~timeDurationWithTime(createdOn)}}</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    {{/for}}
+                    {{if Count > 0}}
+                    <li onclick="dimissAllNotification()">
+                        <div class="text-center link-block">
+                            <a>
+                                <i class="fa fa-envelope"></i> <strong>Dismiss all notifications</strong>
+                            </a>
+                        </div>
+                    </li>
+                    {{/if}}
+                </ul>
+            </script>
+            <li id="profileMenu" class="dropdown" style="padding:7px 15px 7px 0">
+                <a href="#" class="btn btn-default hidden-xs hidden-sm visible-lg-block visible-md-block" data-toggle="dropdown" style="padding-top:3px !important; color: #e4d9d9; padding-bottom: 3px !important;border:none">
+                    <img src='@gravatarUrl' class="avatar img-circle img-thumbnail" width="40" alt="avatar"> <i class="fa fa-caret-down" style="padding-left: 10px;"></i>
+                </a>
+                <a href="#" class="btn btn-default hidden-lg hidden-md visible-sm-inline-block visible-xs-inline-block" data-toggle="dropdown" style="padding-top:3px !important; padding-bottom: 3px !important;">
+                    <i class="fa fa-user"></i>&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
+                </a>
+                <ul id="dropdownProfile" class="dropdown-menu">
+                    <li>
+                        <a href='@Url.Action("Manage", "Account")'><i class="fa fa-user"></i>&nbsp;&nbsp;Profile</a>
+                    </li>
+                    <li>
+                        <a title="Log off" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Log off</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    @*<ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>*@
+}

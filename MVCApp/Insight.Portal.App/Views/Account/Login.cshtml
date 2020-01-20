@@ -1,0 +1,54 @@
+﻿@using Insight.Portal.App.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="container" style="margin-top:30px;">
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+                    <div style="margin-top: 25px" class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="fa fa-user fa-fw fa-lg"></i></span>
+                        <input name="UserName" class="form-control" id="UserName" type="text" placeholder="Login Id" data-val-required="The Login Id field is required." data-val="true" value="" />
+                    </div>
+                    <div>
+                        <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="UserName" />
+                    </div>
+                    <div style="margin-top: 25px" class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="fa fa-key fa-fw fa-lg"></i></span>
+                        <input name="Password" class="form-control" id="Password" type="password" placeholder="Password" data-val-required="The Password field is required." data-val="true" />
+                    </div>
+                    <div>
+                        <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="Password" />
+                    </div>
+                    <div class="input-group" style="margin-top: 25px">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="RememberMe" name="RememberMe" value="true" data-val="true" data-val-required="The Remember me? field is required.">Remember me
+                                <input name="RememberMe" type="hidden" value="false" />
+                            </label>
+                        </div>
+                    </div>
+                    <div style="margin-top:15px" class="form-group">
+                        <div class="col-sm-12 controls">
+                            <input type="submit" value="Log in" class="btn btn-success btn-lg" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@*<p class="text-muted small text-center">&copy; 2014-@DateTime.Now.Year Vici Capital Partners. All right reserved.</p>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

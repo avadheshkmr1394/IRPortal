@@ -1,0 +1,4 @@
+===================Do not delete this File=======================
+Description:-
+Log folder is used for Email Content, and this Folder must have atleast one file in it otherwise
+this folder will not be added in Git and published build.

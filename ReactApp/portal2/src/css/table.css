@@ -1,0 +1,175 @@
+/***************************************
+      BEGIN: v-table
+****************************************/
+table.v-table {
+  border-collapse: collapse;
+  width: calc(100% + 10px);
+  max-width: inherit !important;
+  font-size: 16px;
+  color: #263d88;
+  margin-left: -10px; }
+  table.v-table th,
+  table.v-table td {
+    padding: 4px 0; }
+  table.v-table thead > tr > th:not(:first-child),
+  table.v-table tbody > tr > td:not(:first-child),
+  table.v-table tfoot > tr > td:not(:first-child) {
+    text-align: right; }
+  table.v-table thead > tr > th,
+  table.v-table tfoot > tr > td {
+    text-transform: uppercase;
+    font-weight: 600; }
+  table.v-table thead > tr.center-text > th {
+    text-align: center;
+    vertical-align: bottom; }
+  table.v-table thead > tr > th {
+    border-bottom: 2px solid #a6a9af; }
+  table.v-table tbody > tr > td {
+    border-bottom: 1px solid #d3d4d7; }
+  table.v-table tfoot > tr:first-child > td {
+    border-top: 2px solid #a6a9af; }
+  table.v-table tr:last-child > td,
+  table.v-table tbody > tr:last-child > td {
+    border-bottom: none; }
+  table.v-table tr th.border-right,
+  table.v-table tr td.border-right {
+    border: none;
+    border-right: 2px solid #a6a9af !important;
+    margin-right: 10px; }
+  table.v-table .plus-sign {
+    position: relative; }
+    table.v-table .plus-sign:before {
+      content: "\f217";
+      font-family: "Ionicons";
+      font-size: 16px;
+      font-weight: 300;
+      position: absolute;
+      left: 10px;
+      top: calc(50% - 10px); }
+  table.v-table .minus-sign {
+    position: relative; }
+    table.v-table .minus-sign:before {
+      content: "\f208";
+      font-family: "Ionicons";
+      font-size: 16px;
+      font-weight: 300;
+      position: absolute;
+      left: 10px;
+      top: calc(50% - 10px); }
+  table.v-table .equal-sign {
+    position: relative; }
+    table.v-table .equal-sign:before {
+      content: "\f478";
+      font-family: "Ionicons";
+      transform: rotate(90deg);
+      font-size: 16px;
+      font-weight: 300;
+      position: absolute;
+      left: 10px;
+      top: calc(50% - 10px); }
+  table.v-table tr.bold-row > td, table.v-table .bold-td {
+    font-weight: 600; }
+  table.v-table tr.bold-border-bottom > td {
+    border-bottom: 2px solid #a6a9af !important; }
+  table.v-table .no-border, table.v-table .no-border > td {
+    border: none !important; }
+  table.v-table .border-top-thick td, table.v-table .border-top-thick {
+    border-top: 2px solid #a6a9af !important;
+    border-bottom: none; }
+  table.v-table tr.modal-table-border-highlighted {
+    background: rgba(255, 94, 89, 0.25) !important; }
+
+#divSCRReport .v-table tfoot > tr:not(:first-child) > td {
+  border-top: 1px solid #d3d4d7; }
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  table.v-table {
+    font-size: 14px; }
+  table.impact-table thead > tr > th:not(:first-child) {
+    text-transform: capitalize;
+    vertical-align: bottom;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50px; } }
+
+@media screen and (max-width: 991px) {
+  table.v-table {
+    font-size: 14px; }
+  table.impact-table thead > tr > th:not(:first-child) {
+    text-transform: capitalize;
+    vertical-align: bottom;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50px; } }
+
+.v-table-title, .v-table-title-alt,
+.v-report-title {
+  width: 100%;
+  height: 28px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
+  margin: 0 0 20px 0;
+  color: #263d88;
+  border-bottom: 1px solid #4e5561;
+  text-transform: uppercase; }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .v-table-title, .v-table-title-alt,
+    .v-report-title {
+      font-size: 16px; } }
+  @media screen and (max-width: 991px) {
+    .v-table-title, .v-table-title-alt,
+    .v-report-title {
+      font-size: 16px; } }
+
+.v-table-title-alt {
+  width: 100%;
+  margin: 0 0 20px 0; }
+
+.v-report-container .v-table,
+.v-report-container .v-report-title,
+.v-report-container .v-table-title,
+.v-report-container .v-table-title-alt {
+  color: #4e5561; }
+
+.table-container {
+  border-radius: 4px;
+  background-color: #f6f7f7;
+  padding: 12px 25px; }
+
+#divSCRReport .report-title2, #divSCRReport .v-table-title, #divSCRReport .v-table-title-alt, #divSCRReport .v-table {
+  color: #4e5561; }
+
+#divTrackingTabularReport .report-title2, #divTrackingTabularReport .v-table-title, #divTrackingTabularReport .v-table-title-alt, #divTrackingTabularReport .v-table {
+  color: #4e5561; }
+
+.table-container > div.cont-err > table.v-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: inherit !important;
+  margin-left: 0; }
+  .table-container > div.cont-err > table.v-table tr th:not(:last-child), .table-container > div.cont-err > table.v-table tr td:not(:last-child) {
+    border-right: 8px solid #f6f7f7 !important; }
+  .table-container > div.cont-err > table.v-table tr.modal-table-border-highlighted th:not(:last-child), .table-container > div.cont-err > table.v-table tr.modal-table-border-highlighted td:not(:last-child) {
+    border-right: rgba(255, 94, 89, 0.25) !important; }
+
+#dashBoardSummaryDetailModal div.cont-err > table.v-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: inherit !important;
+  margin-left: 0; }
+  #dashBoardSummaryDetailModal div.cont-err > table.v-table tr th:not(:last-child), #dashBoardSummaryDetailModal div.cont-err > table.v-table tr td:not(:last-child) {
+    border-right: 8px solid #fff !important; }
+  #dashBoardSummaryDetailModal div.cont-err > table.v-table tr.modal-table-border-highlighted th:not(:last-child), #dashBoardSummaryDetailModal div.cont-err > table.v-table tr.modal-table-border-highlighted td:not(:last-child) {
+    border-right: rgba(255, 94, 89, 0.25) !important;
+    padding-right: 4px; }
+
+.vp-thick-border-bottom {
+  border-bottom: 2px solid #a6a9af !important;
+  border-top: none !important; }
+
+.vp-table-header-info {
+  font-size: 12px;
+  text-transform: capitalize;
+  margin-left: 5px; }

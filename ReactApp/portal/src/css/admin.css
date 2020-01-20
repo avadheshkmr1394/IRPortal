@@ -1,0 +1,11 @@
+.page-header {
+  background-color: #1ABC9C;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+
+#hdrEmployee {
+  padding: 10px; }
+
+p {
+  margin-bottom: 0rem; }

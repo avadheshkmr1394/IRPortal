@@ -1,0 +1,191 @@
+﻿
+@{
+    ViewBag.Title = "Attendance Report";
+    string startDate = string.IsNullOrEmpty(Convert.ToString(TempData["StartDate"])) ? DateTime.Now.ToString() : Convert.ToString(TempData["StartDate"]);
+    DateTime todaysDate = DateTime.Parse(startDate);
+    string startDateOfMonth = new DateTime(todaysDate.Year, todaysDate.Month, 1).ToString("MM-dd-yyyy");
+    string currentMonthYear = Convert.ToDateTime(startDateOfMonth.ToString()).ToString("Y");
+}
+<style>
+    .incompleteCls {
+        background-color: #aef06a !important;
+    }
+
+    .weekEndsCls {
+        background-color: #b2beb5 !important;
+    }
+
+    .leaveCls {
+        background-color: #fc8eac !important;
+    }
+
+    .holidayCls {
+        background-color: #9bddff !important;
+    }
+</style>
+
+@Html.Partial("_PageTitleBar", new ViewDataDictionary
+                               {
+                                    { "SectionTitle", "Admin" },
+                                    { "PageTitle", ViewBag.Title }
+                                }
+)
+
+<section id="spinner"></section>
+<script>
+    var spinner = new Spinner().spin($('#spinner')[0]);
+    $('#spinner').data('spinner', spinner);
+
+    var stopSpinner = function () {
+        $('#spinner').data('spinner').stop();
+    }
+</script>
+
+<div class="col-md-12">
+    <div id="container" class="col-sm-12 col-md-12">
+        <div class="pull-right">
+            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button id="btnPrev" onclick="nextPrevClick(-1);" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Previous Month">
+                        <i class="fa fa-angle-left fa-fw"></i>
+                    </button>
+                    <button id="btnTitle" class="btn btn-default" value=""></button>
+                    <button id="btnNext" onclick="nextPrevClick(1)" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Next Month">
+                        <i class="fa fa-angle-right fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <table id="gridAttendanceReport" class="table table-striped table-bordered">
+        <thead>
+            <tr id="attendanceReportHeader" class="tableHeaderColored"></tr>
+        </thead>
+        <tbody id="attendanceReportBody"></tbody>
+    </table>
+    <script id="attendanceReportBodyTemplate" type="text/x-jquery-tmpl">
+    </script>
+    <script id="attendanceReportHeaderTemplate" type="text/x-jquery-tmpl">
+        <th>{{>ReportHeaders}}</th>
+    </script>
+</div>
+
+<script>
+    var baseUrl = '@Url.Action("Index", "Home")';
+    var attendanceReportHeaders;
+    var startDateOfMonth = '@startDateOfMonth';
+    var currentMonthYear = '@currentMonthYear';
+    $.views.helpers({
+        baseUrl: baseUrl,
+        rendererCol1: function (data) {
+            return weekEndRenderer(data);
+        }
+    });
+
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+        $('#sideNavParent').removeClass("hidden");
+        $('#sideNavProjects').addClass("hidden");
+        $('#btnTitle').html('<strong>' + currentMonthYear + '</strong>')
+        setTimeout(loadAttendanceReportBody, 50);
+        irp.prepareSectionMenu("admin");
+        document.getElementById('toolbarCol').appendChild(document.getElementById('container'));
+    });
+
+
+    var loadAttendanceReportBody = function () {
+        irp.getAjaxData(baseUrl + 'Attendance/GetAttendanceReport', { startDateOfMonth: startDateOfMonth }, renderAttendanceReportBody, { renderElement: 'attendanceReport' });
+    };
+
+    var renderAttendanceReportBody = function (data, params) {
+        var data = $.parseJSON(data);
+        var renderElement = params.renderElement;
+
+        var reportHeadersArray = [];
+        for (var i = 0; i < data.ReportHeaders.length; i++) {
+            var reportHeadersobj = {};
+            var reportData = data.ReportHeaders[i].ReportHeaders;
+            if (reportData == 'EmployeeName') {
+                reportHeadersobj.ReportHeaders = 'Employee Name';
+
+            } else {
+                reportHeadersobj.ReportHeaders = (reportData.replace("X", " "));
+
+            }
+            reportHeadersArray.push(reportHeadersobj);
+        }
+        $('#' + renderElement + 'Header').html($('#' + renderElement + 'HeaderTemplate').render(reportHeadersArray));
+
+        var bodyScript = '<tr>';
+        for (var i = 0; i < data.ReportHeaders.length; i++) {
+            if (data.ReportHeaders[i].ReportHeaders == "EmployeeName") {
+                bodyScript = bodyScript + '<td>{{>' + data.ReportHeaders[i].ReportHeaders + '}}</td>';
+            } else {
+                bodyScript = bodyScript + '{{:~rendererCol1(' + data.ReportHeaders[i].ReportHeaders + ')}}';
+            }
+        }
+        bodyScript = bodyScript + '</tr>';
+        $('#attendanceReportBodyTemplate').text(bodyScript);
+        $('#attendanceReportBody').html('');
+        $('#attendanceReportBody').html($('#attendanceReportBodyTemplate').render(data.Attendance));
+        stopSpinner();
+    };
+
+    var nextPrevClick = function (direction) {
+        if (direction == 1) {
+            startDateOfMonth = '@Convert.ToDateTime(startDateOfMonth).AddMonths(1).ToString()';
+        } else {
+            startDateOfMonth = '@Convert.ToDateTime(startDateOfMonth).AddMonths(-1).ToString()';
+        }
+        reLoadAttendanceReportData();
+    };
+
+    var reLoadAttendanceReportData = function () {
+        location.href = '/Attendance/ReloadAttendanceReport?startDateOfMonth=' + startDateOfMonth + ''
+    };
+
+    var weekEndRenderer = function (value) {
+        if (value == undefined || value == '') return '<td></td>';
+        else if (value.indexOf('P') > -1) {
+
+            return '<td class="incompleteCls">' + value.slice(2, value.length) + '</td>';
+        }
+        else if (value == "L-CL") {
+            return '<td class="leaveCls">CL</td>';
+        }
+        else if (value == "O ") {
+            return '<td class="weekEndsCls"></td>';
+        }
+        else if (value == "I ") {
+            return '<td class="incompleteCls"></td>';
+        }
+        else if (value == "L-SL") {
+            return '<td class="leaveCls">SL</td>';
+        }
+        else if (value == "L-EL") {
+            return '<td class="leaveCls">EL</td>';
+        }
+        else if (value == "H ") {
+            return '<td class="holidayCls"></td>';
+        } else {
+            return '<td></td>';
+        }
+    };
+
+    function getDateForTitle(date) {
+        var monthNames = [
+          "January", "February", "March",
+          "April", "May", "June", "July",
+          "August", "September", "October",
+          "November", "December"
+        ];
+        var year = date.getFullYear();
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+        return monthNames[month - 1] + ' ' + year;
+    }
+</script>

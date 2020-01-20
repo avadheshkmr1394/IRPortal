@@ -1,0 +1,56 @@
+  .react-datepicker__navigation--next{
+    background-color: transparent !important;
+    border-left-color: #aaa !important;
+  }
+
+  .react-datepicker__navigation--previous{
+    background-color: transparent !important;
+    border-right-color: #aaa !important;
+  }
+  
+  .react-datepicker__navigation{
+    border-width: .55rem !important;
+  }
+  
+  .react-datepicker__navigation--next:hover{
+    border-left-color: #888 !important;
+  }
+
+  .react-datepicker__navigation--previous:hover{
+    border-right-color: #888 !important;
+  }
+
+  .react-datepicker__time-container{
+    width: 100px !important;
+  }
+
+  .react-datepicker__time-box{
+    width: 100px !important;
+  }
+
+  .react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button){
+    right: 110px;
+  }
+
+  .react-datepicker-popper{
+    z-index: 9999 !important;
+  }
+
+  .react-datepicker-wrapper{
+    width: 100% !important;
+  }
+
+  .react-datepicker__input-container{
+    width: 100% !important;
+  }
+
+  .react-datepicker-time__header{
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
+
+  .ReactTable .react-datepicker-wrapper .form-control[disabled] {
+       background-color: transparent !important;
+       border: none !important;
+       color: #1d3f77 !important;
+  }

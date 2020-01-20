@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Holidays";
+}
+
+@Html.Partial("_PageTitleBar", new ViewDataDictionary
+                               {
+                                    { "SectionTitle", "Employees" },
+                                    { "PageTitle", ViewBag.Title }
+                                }
+)
+
+<section id="spinner"></section>
+<script>
+    var spinner = new Spinner().spin($('#spinner')[0]);
+    $('#spinner').data('spinner', spinner);
+
+    var stopSpinner = function () {
+        $('#spinner').data('spinner').stop();
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <table id="gridHolidays" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Holiday Date</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody id="holidays"></tbody>
+        </table>
+        <script id="gridHolidaysTemplate" type="text/x-jquery-tmpl">
+            <tr class="text-muted">
+                <td>{{>HolidayDate}}</td>
+                <td>{{>Name}}</td>
+            </tr>
+        </script>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        setTimeout(loadData, 50);
+    });
+
+    var loadData = function () {
+        irp.prepareSectionMenu("employees");
+        irp.getAjaxData('/Employees/GetHolidays', { param1: 'param1' }, loadDataCallback, { renderElement: 'gridHolidays' });
+    };
+
+    var loadDataCallback = function (data, params) {
+        var parsedData = $.parseJSON(data);
+        $("#" + params.renderElement).html($("#" + params.renderElement + "Template").render(parsedData.Table));
+        stopSpinner();
+    };
+</script>

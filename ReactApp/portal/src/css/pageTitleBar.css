@@ -1,0 +1,17 @@
+.text-color {
+  color: #ccc;
+  font-size: 12px;
+  padding: 7px 20px 5px 20px; }
+
+body {
+  color: #aaa !important; }
+
+#root {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0; }
+
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0px; } }

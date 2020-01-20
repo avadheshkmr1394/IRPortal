@@ -1,0 +1,14 @@
+input::-moz-placeholder, textarea:-moz-placeholder,
+input:-moz-placeholder, input::-moz-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, input:-moz-placeholder, textarea:-moz-placeholder {
+  font-size: 16px; }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    input::-moz-placeholder, textarea:-moz-placeholder,
+    input:-moz-placeholder, input::-moz-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, input:-moz-placeholder, textarea:-moz-placeholder {
+      font-size: 14px; } }
+  @media screen and (max-width: 991px) {
+    input::-moz-placeholder, textarea:-moz-placeholder,
+    input:-moz-placeholder, input::-moz-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, input:-moz-placeholder, textarea:-moz-placeholder {
+      font-size: 14px; } }

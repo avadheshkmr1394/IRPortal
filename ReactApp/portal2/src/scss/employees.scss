@@ -1,0 +1,141 @@
+.rt-td{
+    color: black;
+    overflow: inherit !important
+}
+.-cursor-pointer{
+    pointer-events: unset;
+}
+.ReactTable .rt-th, .ReactTable .rt-td{
+    overflow:unset;
+    padding: 4px 5px !important
+}
+.ReactTable .rt-tbody .rt-tr-group{
+    border-bottom: solid 1px rgba(0, 0, 0, 0.16) !important;
+}
+// .rt-table{
+//     border: solid 2px white;
+// }
+// .ReactTable{
+//     border: solid white  !important
+// }
+.rt-resizable-header-content{
+    text-align: left;
+}
+.modal-content{
+    border-radius: 12px !important;
+    border: none !important;
+}
+.delete-modal{
+    padding: 10px 2rem 
+}
+
+// @media screen and (min-width: 576px){
+// .modal-dialog {
+//     margin: 20.75rem auto !important;
+// }}
+
+.modal-content{
+    width: 600px !important;
+}
+.ReactModal__Overlay{
+    background-color: rgba(43, 33, 33, 0.28) !important;
+}
+body {
+    color:unset !important;
+}
+.input-group [class*="col-"] {
+      float: none;
+      padding-right: none !important;
+      padding-left: none !important;
+    }
+ .input-group{
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+.input-group-addon{
+    padding-right: 20px !important;
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 343px;
+}
+.date {
+    width: 344px;
+}
+.input-group-addon{
+     display: block !important;
+    position: inherit;
+    border: inherit;
+}
+.fa-clock-o{
+    background-color: #eeeeee !important; 
+    padding: 11px 12px 8px 7px !important;
+    border: solid 1px !important;
+    margin-top:  0px !important;
+    border-left: azure !important;
+    border-color: #c6c7c6 !important;
+}
+.timepicker-hour{
+    margin-left: 15px;
+}
+.timepicker-minute{
+    margin-left: 15px;
+}
+.form-control{
+    height: 35px !important
+}
+.glyphicon{
+    position: initial !important;
+    margin: 9px -6px !important;
+}
+
+.form-control{
+    border-color:none !important;
+}
+#date-icon{
+    border-top: solid 1px #d4cdcd !important;
+    border-bottom: solid 1px #d4cdcd !important;
+    border-right: solid 1px #d4cdcd !important
+}
+// .rt-tr{
+//     background-color: rgb(155, 156, 154) !important
+// }
+.input-present-intime{
+    background-color: #B2EC5D !important
+}
+.input-present-outtime{
+    background-color: #D5F2AA !important
+}
+.input-Leave-Description{
+    background-color: #FC8EAC !important
+}
+.delete-modal{
+    min-height:    fit-content !important;
+}
+.total-leave-row{
+    background-color: white !important
+}
+.leave-modal{
+    min-height: 278px !important; 
+}
+.react-datepicker-popper{
+    z-index: 9999;
+}
+.react-datepicker{
+font-size: 1.1rem !important;
+}
+// .modal-header{
+//     background-color: #1abc9c;
+// }
+// .input-holiday-Description{
+//     background-color: white !important
+// }
+.td-border {
+    border-right:1px solid #ccc0c0 !important
+}
+.btn{
+    border: 1px solid #ccc;
+    padding: 4.375px  .75rem;
+}
+
+
+

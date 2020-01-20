@@ -1,0 +1,54 @@
+@import "_colors";
+@import "_typography";
+
+body {
+    padding: 0;
+    margin: 0;
+
+    font-family: $font-family;
+    background-color: $app-bg-color-light;
+  }
+
+  * {
+      box-sizing: border-box;
+  }
+
+  .navbar-brand {
+    padding-top: 0px !important;
+     padding-bottom: 0px !important;
+  }
+
+  #header.header-section,
+  #header .search-icon {
+      height: 60px;
+  }
+
+.app {
+    display: flex;
+    // min-height: 50vh;
+
+    &__sidebar {
+      min-height: 100vh;
+      flex: 0 0 240px;
+        background-color: lightblue;
+    }
+
+    &__content {
+        flex: 1;
+        padding: 20px;
+    }
+};
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.ir-bold {
+  font-weight: 600;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 300;
+  color: $brand;
+}

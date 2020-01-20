@@ -1,0 +1,144 @@
+/* ***************** */
+/** Employee Page ** */
+/* ***************** */
+.employee-card-container {
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap; }
+
+.employee-card {
+  width: 200px;
+  height: 200px;
+  background: #97BCFD;
+  border: 2px solid #5789FA;
+  color: #FFFFFF;
+  border-radius: 7px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  list-style-type: none;
+  position: relative; }
+
+.employee-card-inner {
+  height: 150px;
+  background: #97BCFD;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 10px 10px 10px;
+  border-radius: 0 0 5px 5px; }
+
+.emp-card-title {
+  font-size: 20px;
+  font-weight: 300;
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center; }
+
+.emp-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background: #2E58D6;
+  position: absolute;
+  left: 50%;
+  top: -50%;
+  transform: translate(-30px, 30px); }
+
+/* *************************** */
+/** Attendance Report Page ** */
+/* *************************** */
+#AttendanceReport .ReactTable .rt-tbody .rt-tr .rt-td {
+  position: relative;
+  padding: 0;
+  height: 40px;
+  line-height: 40px;
+  width: 60px !important; }
+
+#AttendanceReport .ReactTable .rt-tbody .rt-tr .rt-td:first-child {
+  padding: 0 10px; }
+
+#AttendanceReport .ReactTable .rt-tbody .rt-tr .rt-td div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #fff; }
+  #AttendanceReport .ReactTable .rt-tbody .rt-tr .rt-td div div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    border-right: none;
+    align-items: flex-end;
+    padding-right: 3px; }
+
+.weekend {
+  background: #B2BEB5; }
+
+.emp-leave {
+  background: #FC8EAC; }
+
+.emp-holiday {
+  background: #9BDDFF; }
+
+.emp-present {
+  background: #B2EC5D;
+  flex-direction: column; }
+
+.emp-present-incomplete {
+  background: #BE33A4; }
+
+/* *************************** */
+/** Leave Report Page **       */
+/* *************************** */
+#LeaveReportContainer .ReactTable,
+#LeaveReportContainer .ReactTable .rt-table {
+  border-radius: 7px 7px 0 0; }
+
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td {
+  text-align: right;
+  padding-left: 0;
+  border-right: none; }
+
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-child(1) {
+  text-align: left;
+  padding-left: 5px;
+  color: #263D88; }
+
+#LeaveReportContainer .ReactTable .rt-thead .rt-th.leave-type-header {
+  background: #F6F8FA;
+  color: #263D88;
+  text-align: center;
+  border: none; }
+
+.rthfc .-headerGroups .rt-th {
+  background-color: #5789FA !important;
+  color: #FFFFFF !important;
+  border-right: none;
+  font-size: 18px; }
+
+.rthfc .-headerGroups .rt-th:not(:first-child):not(:last-child) {
+  letter-spacing: 5px;
+  color: #263D88 !important;
+  font-weight: 600;
+  font-size: 18px; }
+
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-child(1),
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-last-child(-n+3) {
+  background: #97BCFD; }
+
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-child(-n+6):nth-child(n+2),
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-child(-n+16):nth-child(n+12),
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-child(-n+26):nth-child(n+22),
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-child(-n+36):nth-child(n+32) {
+  background: #dadada; }
+
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-child(-n+11):nth-child(n+7),
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-child(-n+21):nth-child(n+17),
+#LeaveReportContainer .ReactTable .rt-tbody .rt-tr .rt-td:nth-child(-n+31):nth-child(n+27) {
+  background: #dfdfdf; }

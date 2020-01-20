@@ -1,0 +1,65 @@
+@import "base/_variables";
+@import "_colors";
+@import "_typography";
+@import "_global";
+
+#header.header-section {
+    height: $navbar-height;
+}
+
+.ir-navbar {
+    padding: 0;
+    height: $navbar-height;
+    background-color: $navbar-bg !important;
+
+    .navbar-brand {
+      min-width: 250px;
+      margin-right: 0;
+      padding: 0;
+      padding-left: 20px;
+    }
+
+    .nav-item {
+      width: auto !important;
+      border-radius: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul.navbar-nav {
+      li {
+        font-weight: 600;
+        font-size: 16px;
+        height: $navbar-height;
+      }
+    }
+
+    .navbar-nav .nav-link.active {
+      color: $navbar-link-active;
+      background: transparent;
+      background-color: $navbar-link-active-bg;
+      border-bottom: 5px solid $navbar-link-active-bb;
+    }
+    .navbar-nav .nav-link {
+      padding: 0 25px;
+      line-height: calc(#{$navbar-height} - 5px);
+      // line-height: calc(#{$navbar-height} - 0px);
+      color: $navbar-link-color;
+      cursor: pointer;
+
+      @media #{$bp-medium} {
+        padding: 0 15px;
+      }
+      @media #{$bp-small} {
+        padding: 0 10px;
+      }
+      @media #{$bp-xsmall} {
+        padding: 0 5px;
+      }
+
+      &:hover {
+        color: $navbar-link-color;
+      }
+    }
+
+  }

@@ -1,0 +1,37 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: #f6faff; }
+
+* {
+  box-sizing: border-box; }
+
+.navbar-brand {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important; }
+
+#header.header-section,
+#header .search-icon {
+  height: 60px; }
+
+.app {
+  display: flex; }
+  .app__sidebar {
+    min-height: 100vh;
+    flex: 0 0 240px;
+    background-color: lightblue; }
+  .app__content {
+    flex: 1;
+    padding: 20px; }
+
+.cursor-pointer {
+  cursor: pointer; }
+
+.ir-bold {
+  font-weight: 600; }
+
+.page-title {
+  font-size: 28px;
+  font-weight: 300;
+  color: #263D88; }

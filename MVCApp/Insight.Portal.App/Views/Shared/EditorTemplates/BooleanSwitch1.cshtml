@@ -1,0 +1,82 @@
+﻿@model bool?
+@{
+    // make use of nullable attribute values
+    var yesSelectedDuplicate = Model.HasValue && Model.Value ? "active" : null;
+    var noSelectedDuplicate = (Model.HasValue && !Model.Value) || (!Model.HasValue && ViewData.ModelMetadata.IsNullableValueType) ? "active" : null;
+    var noSelection = !Model.HasValue ? "active" : null;
+
+    // get the name of the ID - this is to support multiple fields
+    var htmlField = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+@Html.HiddenFor(model => model)
+<div id="yesSelectedDuplicate" class="btn-group" data-toggle="buttons">
+    <label id="lblYesDuplicate" class="btn btn-success">
+        <input type="radio" class="bool-@htmlField" onchange="clickSwitchDuplicate('yes')" /> Yes
+    </label>
+    <label id="lblBlankDuplicate" class="btn btn-default" style="width:44px;height:34px;margin-top:1px">
+        <input type="radio" class="bool-@htmlField" onchange="clickSwitchDuplicate('yes')" />&nbsp;
+    </label>
+</div>
+<div id="noSelectedDuplicate" class="btn-group" data-toggle="buttons">
+    <label id="lblBlankDuplicate1" class="btn btn-default" style="width:44px;height:34px;margin-top:1px">
+        <input type="radio" class="bool-@htmlField" onchange="clickSwitchDuplicate('no')" />&nbsp
+    </label>
+    <label id="lblNoDuplicate" class="btn btn-default">
+        <input type="radio" class="bool-@htmlField" onchange="clickSwitchDuplicate('no')" /> No
+    </label>
+</div>
+
+<script>
+    $(document).ready(function () {
+        if ("@yesSelectedDuplicate" == "active") {
+            $('#lblYesDuplicate').addClass("active");
+            $('#lblNoDuplicate').removeClass("active");
+            $('#lblBlankDuplicate').removeClass("active");
+            $('#lblBlankDuplicate1').removeClass("active");
+            $('#yesSelectedDuplicate').show();
+            $('#noSelectedDuplicate').hide();
+        } else {
+            $('#lblBlankDuplicate').removeClass("active");
+            $('#lblBlankDuplicate1').removeClass("active");
+            $('#lblYesDuplicate').removeClass("active");
+            $('#lblNoDuplicate').addClass("active");
+            $('#yesSelectedDuplicate').hide();
+            $('#noSelectedDuplicate').show();
+        }
+        if ("@noSelectedDuplicate" == "active") {
+            $('#lblBlankDuplicate').removeClass("active");
+            $('#lblBlankDuplicate1').removeClass("active");
+            $('#lblYesDuplicate').removeClass("active");
+            $('#lblNoDuplicate').addClass("active");
+            $('#noSelectedDuplicate').show();
+            $('#yesSelectedDuplicate').hide();
+        } else {
+            $('#lblBlankDuplicate').removeClass("active");
+            $('#lblBlankDuplicate1').removeClass("active");
+            $('#lblYesDuplicate').addClass("active");
+            $('#lblNoDuplicate').removeClass("active");
+            $('#noSelectedDuplicate').hide();
+            $('#yesSelectedDuplicate').show();
+        }
+    });
+
+    var clickSwitchDuplicate = function myfunction(isSelected) {
+        if (isSelected == 'yes') {
+            $('#lblBlankDuplicate').removeClass("active");
+            $('#lblBlankDuplicate1').removeClass("active");
+            $('#lblYesDuplicate').removeClass("active");
+            $('#lblNoDuplicate').addClass("active");
+            $('#@htmlField').val(false);
+            $('#yesSelectedDuplicate').hide();
+            $('#noSelectedDuplicate').show();
+        } else if (isSelected == 'no') {
+            $('#lblBlankDuplicate').removeClass("active");
+            $('#lblBlankDuplicate1').removeClass("active");
+            $('#lblYesDuplicate').addClass("active");
+            $('#lblNoDuplicate').removeClass("active");
+            $('#@htmlField').val(true);
+            $('#noSelectedDuplicate').hide();
+            $('#yesSelectedDuplicate').show();
+        }
+    }
+</script>

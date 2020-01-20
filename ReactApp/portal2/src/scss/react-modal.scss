@@ -1,0 +1,63 @@
+@import "_colors";
+@import "_typography";
+
+.modal-dialog {
+    margin-top: 150px;
+}
+
+.modal-content {
+
+}
+
+.modal-header {
+    // background: rgb(87, 137, 250);
+    .title {
+        color: #263d88;
+        font-weight: 300;
+        font-size: 22px;
+    }
+
+    i {
+        font-size: 22px;
+        // font-weight: 500;
+        text-align: center;
+        // line-height: 24px;
+        color: #5789fa;
+        cursor: pointer;
+    }
+}
+
+.ir-modal-blue-header {
+    .modal-header {
+        background: rgb(87, 137, 250);
+        .title {
+            color: #fff;
+            font-weight: 300;
+            font-size: 22px;
+        }
+
+        i {
+            font-size: 22px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}
+
+// .v-modal-blue-header .modal-dialog .modal-header, .v-modal-blue-header .v-modal-child .modal-dialog .modal-header, .v-modal-blue-header .v-modal-child .v-modal-transparet-header .modal-dialog .modal-header, .v-modal-blue-header .v-modal-child .v-modal .modal-dialog .modal-header, .v-modal-transparet-header .modal-dialog .modal-header, .v-modal-transparet-header .v-modal-blue-header .v-modal-child .modal-dialog .modal-header, .v-modal .modal-dialog .modal-header, .v-modal .v-modal-blue-header .v-modal-child .modal-dialog .modal-header {
+//     height: 80px;
+//     line-height: 80px;
+//     padding: 0 30px;
+//     font-size: 22px;
+//     font-weight: 300;
+//     background: #fff;
+//     color: #263d88;
+//     border-top-left-radius: 10px;
+//     border-top-right-radius: 10px;
+// }
+
+.ReactModalPortal{
+    position: absolute;
+    z-index: 99999;
+}

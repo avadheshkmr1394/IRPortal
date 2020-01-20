@@ -1,0 +1,54 @@
+﻿
+@{
+    var sectionTitle = ViewData["SectionTitle"];
+    var pageTitle = ViewData["PageTitle"];
+    var truncateTitle = pageTitle.ToString().Substring(0, 3);
+}
+<style>
+</style>
+<div id="pageTitleRow" class="row">
+    <div class="col-md-12 hidden-xs visible-sm visible-md visible-lg" id="subMenu">
+
+        <ul id="sectionMenuDropdown" class="list-inline " aria-labelledby="dropdownMenu1"></ul>
+
+      
+
+        @*<script id="sectionMenuDropdownTemplate" type="text/x-jquery-tmpl">
+            {{if link != "separator"}}
+            {{if title == '@pageTitle'}}
+            <li class="active"><a href="{{>link}}">{{>title}}</a></li>
+            <li class="divider-horizontal">|</li>
+            {{else}}
+            <li class=""><a href="{{>link}}">{{>title}}</a></li>
+            <li class="divider-horizontal">|</li>
+            {{/if}}
+            {{/if}}
+        </script>*@
+    </div>
+    @*<div id="pageTitleCol" class="col-md-4">
+        <div class="pull-left">
+            <button class="btn btn-default dropdown-toggle hidden-sm visible-xs hidden-md hidden-lg" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="True">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <ul id="sectionMenuDropdown1" class="dropdown-menu" aria-labelledby="dropdownMenu1"></ul>
+            <script id="sectionMenuDropdownTemplate1" type="text/x-jquery-tmpl">
+                {{if #index == 0}}
+                <li class="dropdown-header">@sectionTitle Menu</li>
+                {{/if}}
+                {{if link == "separator"}}
+                <li role="separator" class="divider"></li>
+                {{else}}
+                {{if title == '@pageTitle'}}
+                <li><a href="{{>link}}" style="border-left: 3px solid orange;">{{>title}}</a></li>
+                {{else}}
+                <li><a href="{{>link}}" style="border-left: 3px solid transparent;">{{>title}}</a></li>
+                {{/if}}
+                {{/if}}
+            </script>
+        </div>
+        <div class="page-header pull-left hidden-lg hidden-md" style="padding-top: 8px; width: 50px;margin-left: 5px;">@truncateTitle</div>
+        <div class="page-header pull-left hidden-xs hidden-sm" style="padding-top: 8px;">&nbsp;@pageTitle</div>
+    </div>*@
+    <div id="toolbarCol" class="col-xs-12 col-sm-12 col-md-8 pull-right" style="padding-top: 5px;">
+    </div>
+</div>

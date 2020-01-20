@@ -1,0 +1,405 @@
+﻿#tblBodyEmployees .card {
+  border-top-width: 0;
+  border-bottom-width: 2px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+#tblBodyEmployees .card.hovercard {
+  position: relative;
+  padding-top: 0;
+  overflow: hidden;
+  text-align: left;
+  background-color: rgba(214, 224, 226, 0.2); }
+
+#tblBodyEmployees .card.hovercard .avatar img {
+  width: 100px;
+  height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.5); }
+
+#tblBodyEmployees .card.hovercard .info {
+  padding: 4px 8px 10px; }
+
+#tblBodyEmployees .card.hovercard .info .title {
+  margin-bottom: 4px;
+  font-size: 24px;
+  line-height: 1;
+  color: #262626;
+  vertical-align: middle; }
+
+#tblBodyEmployees .card.hovercard .info .desc {
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 25px;
+  color: #737373;
+  text-overflow: ellipsis; }
+
+#tblBodyEmployees .label.label-primary.rank-label {
+  padding: 5px 10px 5px 10px;
+  border-radius: 27px; }
+
+#MonthlyWorklogGrid, #MonthlyWorklogGridTeams, #MonthlyWorklogGridProjects, #GridViewAttendence, #LeaveGridPanel, #panelUpcomingLeaves, #gridPanelTask, #GridLeaveReport, #deploymentDetailTable, #releaseNoteDetailTable, #gridAttendanceReport, #gridHolidays {
+  border: solid 2px #1ABC9C;
+  margin-bottom: 15px; }
+
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  background-color: white !important; }
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+  /*padding-left: 15px;*/
+  /*padding-right: 15px;*/
+  /*margin-left: 14em;*/
+  /*margin-top: 1em;*/
+  /*width: 85%;*/
+  /*transition: margin-left 0.3s linear;*/
+  /*-moz-transition: margin-left 0.3s linear;*/
+  /*-webkit-transition: margin-left 0.3s linear;*/ }
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+  white-space: normal; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: #f5f5f5; }
+
+.fa-stack {
+  display: block;
+  margin-top: 12px; }
+
+.brand-logo {
+  display: block;
+  padding: 5px; }
+
+.modal-body {
+  padding-bottom: 0px !important; }
+
+.page-header {
+  font-size: 24px;
+  margin: 0 0 10px;
+  padding: 0;
+  border: none;
+  line-height: 28px;
+  font-weight: 500;
+  color: #2E508F; }
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+
+.nav li .btn-default {
+  background-color: transparent;
+  border: none; }
+
+.navbar-nav > li > .dropdown-menu {
+  margin-top: 7px; }
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: transparent; }
+
+@media (max-width: 767px) {
+  #ddlEmployees {
+    width: 80px; }
+  #cbUserList, #cbViewList {
+    width: 75px; } }
+
+@media (min-width: 768px) {
+  #ddlEmployees {
+    width: 100px; }
+  #cbUserList {
+    width: 200px; }
+  #cbViewList {
+    width: 100px; } }
+
+@media (min-width: 992px) {
+  #cbUserList {
+    width: 192px; }
+  #ddlEmployees {
+    width: 150px; } }
+
+@media (min-width: 1200px) {
+  #cbUserList {
+    width: 192px; }
+  #ddlEmployees {
+    width: 150px; } }
+
+/*for bootstrap dropdown menu disable*/
+.dropdown-menu > .disabled {
+  cursor: not-allowed; }
+
+/* The real magic ;) */
+.dropdown-menu > .disabled > a {
+  pointer-events: none; }
+
+.x-body {
+  font-size: 14px; }
+
+div[id^="headercontainer-"] .x-column-header {
+  background-color: #1ABC9C !important;
+  color: #fff;
+  border-right: none; }
+
+.x-column-header-over {
+  background: none; }
+
+/* Coloured Model Header*/
+.modal-header-colored {
+  background-color: #1ABC9C;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+
+/* Coloured Table Header*/
+.tableHeaderColored {
+  background-color: #1ABC9C;
+  color: white; }
+
+/*On Drag and Drop*/
+body.dragging, body.dragging * {
+  cursor: move !important; }
+
+.dragged {
+  position: absolute;
+  opacity: 1.0;
+  /*z-index: 1000;*/ }
+
+/*Button Stacking for small size Buttons*/
+.fa-xxsm {
+  font-size: 0.7em;
+  margin-top: 0px !important;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 5px; }
+
+/*bootstrapTable*/
+.bootstrap-table thead {
+  background-color: #1ABC9C;
+  color: whitesmoke;
+  border-bottom: none; }
+
+/*************************************************************************************************/
+/* Custom ir-* styles                                                                           */
+/*************************************************************************************************/
+.ir-tasktype-1 {
+  border-left: solid 6px #CC0000;
+  /* bug */ }
+
+.ir-tasktype-2 {
+  border-left: solid 6px #009900;
+  /* Improvement */ }
+
+.ir-tasktype-3 {
+  border-left: solid 6px #FF9933;
+  /* New Feature */ }
+
+.ir-tasktype-4 {
+  border-left: solid 6px #BFE4FF;
+  /* Task */ }
+
+.ir-tasktype-5 {
+  border-left: solid 6px #5c5c5c;
+  /* Recurring */ }
+
+.ir-taskpriority-icon-1 {
+  content: url("Images/TaskPriority-Blocker.png"); }
+
+.ir-taskpriority-icon-1::after {
+  content: url("Images/TaskPriority-Blocker.png");
+  /* firefox fix */ }
+
+.ir-taskpriority-icon-2 {
+  content: url("Images/TaskPriority-Critical.png"); }
+
+.ir-taskpriority-icon-2::after {
+  content: url("Images/TaskPriority-Critical.png");
+  /* firefox fix */ }
+
+.ir-taskpriority-icon-3 {
+  content: url("Images/TaskPriority-Major.png"); }
+
+.ir-taskpriority-icon-3::after {
+  content: url("Images/TaskPriority-Major.png");
+  /* firefox fix */ }
+
+.ir-taskpriority-icon-4 {
+  content: url("Images/TaskPriority-Minor.png"); }
+
+.ir-taskpriority-icon-4::after {
+  content: url("Images/TaskPriority-Minor.png");
+  /* firefox fix */ }
+
+.ir-taskpriority-icon-5 {
+  content: url("Images/TaskPriority-Trivial.png"); }
+
+.ir-taskpriority-icon-5::after {
+  content: url("Images/TaskPriority-Trivial.png");
+  /* firefox fix */ }
+
+.ir-tasktype-icon-1 {
+  content: url("Images/TaskType-Bug.png"); }
+
+.ir-tasktype-icon-1::after {
+  content: url("Images/TaskType-Bug.png");
+  /* firefox fix */ }
+
+.ir-tasktype-icon-2 {
+  content: url("Images/TaskType-Improvement.png"); }
+
+.ir-tasktype-icon-2::after {
+  content: url("Images/TaskType-Improvement.png");
+  /* firefox fix */ }
+
+.ir-tasktype-icon-3 {
+  content: url("Images/TaskType-NewFeature.png"); }
+
+.ir-tasktype-icon-3::after {
+  content: url("Images/TaskType-NewFeature.png");
+  /* firefox fix */ }
+
+.ir-tasktype-icon-4 {
+  content: url("Images/TaskType-Task.png"); }
+
+.ir-tasktype-icon-4::after {
+  content: url("Images/TaskType-Task.png");
+  /* firefox fix */ }
+
+.ir-tasktype-icon-5 {
+  content: url("Images/TaskType-Recurring.png"); }
+
+.ir-tasktype-icon-5::after {
+  content: url("Images/TaskType-Recurring.png");
+  /* firefox fix */ }
+
+.ir-taskstatus-11 {
+  /* 11 - Backlog */
+  background-color: #777777; }
+
+.ir-taskstatus-12, .ir-taskstatus-13, .ir-taskstatus-22 {
+  /*  12 - To Do
+        13 - Specs & Design
+        22 - Open
+    */
+  background-color: #5BC0DE; }
+
+.ir-taskstatus-21 {
+  /* 21 - In Progress */
+  background-color: #337AB7; }
+
+.ir-taskstatus-23 {
+  /* 23 - Reopened */
+  background-color: #D9534F; }
+
+.ir-taskstatus-31 {
+  /* 31 - QA Test */
+  background-color: #F0AD4E; }
+
+.ir-taskstatus-41 {
+  /* 41 - Deployed Test Env */
+  background-color: #80c780; }
+
+.ir-taskstatus-42 {
+  /* 42 - Deployed Production */
+  background-color: #4cae4c; }
+
+.ir-taskstatus-51, .ir-taskstatus-52 {
+  /*  51 - Resolved
+        52 - Closed
+    */
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  vertical-align: baseline;
+  border-radius: .25em;
+  border: solid 1px #c2c2c2; }
+
+.ir-x-small {
+  font-size: 75%; }
+
+.ir-highlight {
+  background-color: #ffedcc; }
+
+.circularImage {
+  border-radius: 50%;
+  border: solid 2px #F3E5AB; }
+
+.ir-collapse-container {
+  border: 2px solid #E5E4E2;
+  border-radius: 2px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 25px; }
+
+.ir-collapse-container:before,
+.ir-collapse-container:after {
+  display: table;
+  content: " "; }
+
+.ir-collapse-container:after {
+  clear: both; }
+
+.ir-box-header {
+  padding: 10px 0;
+  font-weight: bold; }
+
+.ir-outline {
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  vertical-align: baseline;
+  border-radius: .25em;
+  border: solid 1px #c2c2c2; }
+
+.ir-task-title {
+  color: #676a6c;
+  font-size: 105%;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.ir-task-desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.ir-task-number {
+  color: #318CE7;
+  font-size: 105%;
+  font-weight: 400;
+  vertical-align: top; }
+
+.ir-cursor-hand {
+  cursor: pointer; }
+

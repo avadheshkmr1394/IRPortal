@@ -1,0 +1,17 @@
+.text-color {
+  color: #fff;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 20px; }
+  .text-color:hover, .text-color:visited {
+    color: #fff; }
+
+#root {
+  top: 0;
+  right: 0;
+  left: 0; }
+
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0px; } }

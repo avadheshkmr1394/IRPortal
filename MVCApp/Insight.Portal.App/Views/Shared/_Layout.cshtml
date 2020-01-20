@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title | IR Portal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script src="https://unpkg.com/popper.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jsrender.min.js")
+    @{
+        bool admin = User.IsInRole("Admin");
+    }
+
+
+    <style>
+
+        #menuBar li:not(.active) a {
+            border-top: solid 3px transparent;
+        }
+
+            #menuBar li:not(.active) a:hover {
+                /*border-top: solid 3px #EF9424;*/
+            }
+
+        .active {
+            text-decoration: none;
+            /*border-top: solid 3px #EF9424;*/
+        }
+
+        #subMenu {
+            padding-top: 5px;
+            padding-right: 5px;
+            padding-left: 5px;
+            min-height: 34px;
+        }
+
+        #subMenu, .navbar-inverse .navbar-nav > .active > a {
+            color: #ffffff;
+            background-color: #888888;
+        }
+
+        #sectionMenuDropdown li {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+            #sectionMenuDropdown li a {
+                color: #ccc;
+                text-transform: uppercase;
+                text-decoration: none;
+                font-size: 12px;
+                padding: 7px 20px 5px 20px;
+            }
+
+                #sectionMenuDropdown li a:hover, #sectionMenuDropdown li.active a {
+                    color: #ffffff;
+                    background-color: #888888;
+                    border-bottom: 3px solid orange;
+                }
+
+        #menuBar {
+            margin: -1px;
+        }
+
+            #menuBar li a:hover {
+                color: #ffffff;
+                background-color: #888888;
+            }
+
+        .divider-horizontal {
+            color: #aaa;
+        }
+
+        #pageTitleCol {
+            padding: 10px 15px;
+        }
+
+        .navbar {
+            margin-bottom: 0px !important;
+        }
+
+        visible-md-block {
+            background: aliceblue;
+        }
+
+        #logoutForm {
+            position: relative;
+            z-index: 99999;
+        }
+
+        .modal-dialog {
+            margin: 8.75rem -29.25rem !important;
+        }
+
+        select.form-control:not([size]):not([multiple]) {
+            height: unset
+        }
+
+        h1, h2, h3 {
+            margin-top: 0px;
+        }
+
+        #statusLeaveReport {
+            position: absolute;
+            margin-left: -102px;
+        }
+
+        .page-title-bar {
+            padding-top: 3px;
+            margin-left: -1%;
+            margin-right: -1%;
+        }
+
+        #containerHeader {
+            position: fixed;
+            margin-left: -278px;
+        }
+
+        #btnContainerRefresh {
+            margin-left: -69px;
+        }
+
+        #userPermissionHeader {
+            position: fixed;
+        }
+
+        #btnContainerSave {
+            margin-left: -36px;
+        }
+
+        .nav > li > a:hover, .nav > li > a:focus {
+            background: transparent;
+        }
+        #profileMenu a:hover, #profileMenu a:active, #profileMenu a:focus {
+            background: rgba(35,50,56,.4);
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="modal fade" id="divModelErrorContent">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-colored">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="divModelErrorContentTitle"></h4>
+                </div>
+                <div class="modal-body" id="divModelErrorContentBody">
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_LoginPartial")
+    <div class="container-fluid body-content">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <small class="text-muted pull-left" style="margin-left:10px" id="smlDbBuild" title=""></small>
+        <div class="container-fluid text-center">
+            <small class="text-muted">&copy; 2013-@DateTime.Now.Year Insight Results, LLC. All rights reserved.</small>
+        </div>
+    </footer>
+    @RenderSection("scripts", required: false)
+    @RenderSection("topLevel", required: false)
+    <script>
+        $(document).ready(function () {
+            //$('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+            function reposition() {
+                var modal = $(this),
+                    dialog = modal.find('.modal-dialog');
+                modal.css('display', 'block');
+                dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+            }
+            $('.modal').on('show.bs.modal', reposition);
+            $(window).on('resize', function () {
+                $('.modal:visible').each(reposition);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+﻿@{
+    DateTime today = DateTime.Now;
+    string month = today.ToString("MMMMM");
+    string day = today.ToString("dd");
+}
+<style>
+    time.icon {
+        font-size: 1em; /* change icon size */
+        display: block;
+        position: relative;
+        width: 6em;
+        height: 5em;
+        background-color: #efefef;
+        border-radius: 0.4em;
+        /*box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;*/
+        overflow: hidden;
+    }
+
+        time.icon * {
+            display: block;
+            width: 100%;
+            font-size: 1em;
+            font-weight: bold;
+            font-style: normal;
+            text-align: center;
+        }
+
+        time.icon strong {
+            position: absolute;
+            top: 0;
+            padding: 0.4em 0;
+            color: #fff;
+            background-color: #fd9f1b;
+            /*border-bottom: 1px dashed #f37302;*/
+            box-shadow: 0 2px 0 #fd9f1b;
+        }
+
+        time.icon em {
+            position: absolute;
+            bottom: 0.3em;
+            color: #fd9f1b;
+        }
+
+        time.icon span {
+            font-size: 2.5em;
+            letter-spacing: -0.05em;
+            padding-top: 0.75em;
+            color: #2f2f2f;
+        }
+
+    #divAttandence {
+        background-color: #CFCFC4;
+        border-radius: 4px;
+        padding: 10px 0px 0px 0px;
+        min-height: 100px;
+        max-width: 340px;
+        min-width: 255px;
+        text-align: center;
+    }
+</style>
+<div id="divAttandence">
+    <div class="col-xs-3">
+        <time class="icon">
+            <strong id="monthName"></strong>
+            <span id="monthDay"></span>
+        </time>
+    </div>
+    <div class="col-xs-9">
+        <div class="btn-group" style="padding-left:10px">
+            <button type="button" style="border-radius: 4px;" name="InTime" id="btnInTime" onclick="insertInTime()" value="Upload" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="In Time">
+                <span class="hidden-sm hidden-xs"><i class="fa fa-sign-in fa-fw"></i>&nbsp;In Time</span>
+                <span class="hidden-md hidden-lg"><i class="fa fa-sign-in fa-fw"></i>&nbsp;In</span>
+            </button>
+            <br />
+            <label id="lblInTime" class="control-label"></label>
+        </div>
+        <div class="btn-group">
+            <button type="button" style="border-radius: 4px;" name="OutTime" id="btnOutTime" onclick="insertOutTime()" value="Upload" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Out Time">
+                <span class="hidden-sm hidden-xs"><i class="fa fa-sign-out fa-fw"></i>&nbsp;Out Time</span>
+                <span class="hidden-md hidden-lg"><i class="fa fa-sign-out fa-fw"></i>&nbsp;Out</span>
+            </button>
+            <br />
+            <label id="lblOutTime" class="control-label"></label>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    var loggedInEmployeeId = '@Model';
+
+    $(document).ready(function () {
+        localStorage.setItem('userId', loggedInEmployeeId);
+        resize();
+        $('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+        function reposition() {
+            var modal = $(this),
+                dialog = modal.find('.modal-dialog');
+            modal.css('display', 'block');
+            dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+        }
+        $('.modal').on('show.bs.modal', reposition);
+        $(window).on('resize', function () {
+            $('.modal:visible').each(reposition);
+            resize();
+        });
+        getTodayAttendanceTime();
+        PrintAttendanceDate();
+        disbaleInTime();
+    });
+
+    var resize = function () {
+        if ($(window).width() < 992) {
+        }
+    };
+
+    var insertInTime = function () {
+        var finalInTime = CurrentTime();
+        var todayDate = FinalDate();
+        irp.postAjaxData('@(Url.Action("InsertInTime", "Attendance"))', { loggedInEmployeeId: loggedInEmployeeId, finalInTime: finalInTime, todayDate: todayDate }, afterInTimeMarked, { extStore: '' });
+    };
+
+    var afterInTimeMarked = function (data, params) {
+        getTodayAttendanceTime();
+        disbaleInTime();
+    };
+
+    var insertOutTime = function () {
+        var finalOutTime = CurrentTime();
+        var todayDate = FinalDate();
+        irp.postAjaxData('@(Url.Action("InsertOutTime", "Attendance"))', { loggedInEmployeeId: loggedInEmployeeId, finalOutTime: finalOutTime, todayDate: todayDate }, afterOutTimeMarked, { extStore: '' });
+    };
+
+    var afterOutTimeMarked = function (data, params) {
+        getTodayAttendanceTime();
+        disbaleInTime();
+    };
+
+    var getTodayAttendanceTime = function () {
+        var todayDate = FinalDate();
+        var url = '@(Url.Action("CheckInTime", "Attendance"))';
+        var employeeId = loggedInEmployeeId;
+        $.getJSON(url, { finalDate: todayDate, loggedInEmployeeId: employeeId }, function (data) {
+            if (data.Table.length > 0) {
+                $("#lblInTime").html(formatTime(data.Table[0].InTime));
+                if (data.Table[0].OutTime != null) {
+                    $("#lblOutTime").html(formatTime(data.Table[0].OutTime));
+                }
+            }
+        });
+
+        if ($('#lblInTime').text().trim().length > 0) {
+            $('#lblInTime').disabled;
+        }
+    };
+
+    var disbaleInTime = function () {
+        var finalDate = FinalDate();
+        irp.getAjaxData('/Attendance/CheckInTime', { finalDate: finalDate, loggedInEmployeeId: loggedInEmployeeId }, afterInTimeCheck, { extStore: '' });
+    };
+
+    var afterInTimeCheck = function (data, params) {
+        var paresdData = $.parseJSON(data);
+        if (paresdData.Table.length > 0) {
+            if (paresdData.Table[0].InTime != null) {
+                document.getElementById("btnInTime").disabled = true;
+                document.getElementById("btnOutTime").disabled = false;
+            } else {
+                document.getElementById("btnInTime").disabled = false;
+                document.getElementById("btnOutTime").disabled = true;
+            }
+        } else {
+            document.getElementById("btnInTime").disabled = false;
+            document.getElementById("btnOutTime").disabled = true;
+        }
+    };
+
+    var ClearControl = function () {
+        $('#inputTxtInTime').val('');
+        $('#inputTxtOutTime').val('');
+        $('#txtDuration').val('');
+    };
+
+    function formatTime(date) {
+        var current_Hours = date.toString().substring(11, 13);
+        var current_Minute = date.toString().substring(14, 16);
+        var ampm = current_Hours >= 12 ? "PM" : "AM";
+
+        return current_Hours + ":" + current_Minute + " " + ampm;
+    }
+    function formatTime2(date) {
+        var current_Hours = date.getHours();
+        var current_Minute = date.getMinutes();
+        var ampm = current_Hours >= 12 ? "PM" : "AM";
+
+        return current_Hours + ":" + current_Minute + " " + ampm;
+    }
+    function CurrentTime() {
+        var date = new Date();
+        var currentDate = FinalDate();
+        var current_Hours = date.getHours();
+        var current_Minute = date.getMinutes();
+        var current_Second = date.getSeconds();
+        var time = currentDate + " " + current_Hours + ":" + current_Minute + ":" + current_Second;
+        return time;
+    }
+
+    function FinalDate() {
+        var date = new Date();
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        var finaldate = year + "-" + month + "-" + day;
+        return finaldate;
+    }
+
+    function PrintAttendanceDate() {
+        var date = new Date();
+        var day = date.getDate();
+        var month = date.getMonth();
+        var monthNames = [
+          "January", "February", "March",
+          "April", "May", "June", "July",
+          "August", "September", "October",
+          "November", "December"
+        ];
+        if (day < 10) {
+            day = "0" + day;
+        }
+
+        $("#monthName").text(monthNames[month]);
+        $("#monthDay").text(day);
+    }
+</script>

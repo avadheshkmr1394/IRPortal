@@ -1,0 +1,44 @@
+@import "_colors";
+
+// Variables
+
+// Color system
+
+$brand:                     #263D88;
+
+$accent-darkest:            #2E58D6;
+$accent-dark:               #5789FA;
+$accent-medium:             #97BCFD;
+$accent-light:              #C7DBFE;
+$accent-lighter:            #E7F0FE;
+
+
+
+
+// Main Navbar
+
+$navbar-height:             60px;
+$navbar-bg-color:           $brand;
+
+
+
+// Sec Navbar
+
+$sec-navbar-height:         32px;
+$sec-navbar-bg-color:       $accent-light;
+$sec-navbar-active-menu:    $navbar-link-active-bb;
+
+
+// Footer
+
+$footer-height: 60px;
+$footer-background-color:   #aaa;
+
+
+// ir-button
+
+$btn-height:                38px;
+$btn-line-height:           36px;
+$btn-border-radius:         4px;
+$btn-transition-time:       0.3s;
+$btn-padding-rl:            15px;

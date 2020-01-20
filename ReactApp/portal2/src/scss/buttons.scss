@@ -1,0 +1,202 @@
+@import "base/_variables";
+@import "_global";
+@import "_colors";
+
+////////////////////////////////
+
+// $btn-height:             38px;
+// $btn-line-height:        36px;
+// $border-radius:           4px;
+// $font-size:              16px;
+
+// $pill-height:            34px;
+// $pill-line-height:       32px;
+
+// $badge-height:           18px;
+// $badge-line-height:      18px;
+
+// $transition-time:        0.3s;
+////////////////////////////////
+
+@mixin box-sizing {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+// button {
+
+// }
+
+// button > div i {
+//     font-size: 22px;
+//     @media #{$bp-medium} {
+//         font-size: 18px;
+//     }
+// }
+
+.ir-btn {
+    @include box-sizing;
+    height: $btn-height;
+    line-height: $btn-line-height;
+    border-radius: $btn-border-radius;
+    border-width: 1px;
+    border-style: solid;
+    // font-size: $font-size;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: center;
+    // padding: $btn-padding-rl;
+    margin: 0;
+    outline: none;
+    transition: all $btn-transition-time ease 0s;
+    @media #{$bp-medium} {
+        height: $btn-height * 0.9;
+        line-height: calc(#{$btn-height * 0.9} - 2px);
+    }
+    @media #{$bp-small} {
+        height: $btn-height * 0.8;
+        line-height: calc(#{$btn-height * 0.8} - 2px);
+    }
+}
+
+// .ir-btn-brand {
+//     background-color: $brand;
+//     border-color: $brand;
+//     color: $white;
+// }
+
+// .ir-btn-confirm-dark {
+//     background-color: $confirm-dark;
+//     border-color: $confirm-dark;
+//     color: $white;
+// }
+
+// .ir-btn-neutral-solid-dark {
+//     background-color: $gray-dark;
+//     border-color: $gray-dark;
+//     color: $white;
+// }
+
+// .ir-btn-neutral-solid {
+//     background-color: rgba(176, 188, 208, 0.4);
+//     border-color: transparent;
+//     color: $gray-blue-dark;
+// }
+
+// .ir-btn-destructive {
+//     background-color: $warning-high;
+//     border-color: $transparent;
+//     color: $white;
+// }
+
+// .ir-btn-brand, .ir-btn-neutral-solid-dark,
+// .ir-btn-neutral-solid, .ir-btn-destructive {
+//     &:hover {
+//         background-color: $gray-blue-darkest;
+//         color: $white;
+//     }
+//     &:focus {
+//         background-color: $gray-blue-darkest;
+//         color: $white;
+//         box-shadow: 0 0 10px 0 $accent-dark;
+//     }
+//     &:active {
+//         background-color: $accent-dark;
+//         border-color: $accent-dark;
+//         color: $gray-darkest;
+//     }
+//     &:disabled {
+//         cursor: not-allowed;
+//         background-color: rgba(228, 230, 231, 0.5);
+//         border: solid 1px rgba(178, 184, 186, 0.75);
+//         color: rgba(35, 50, 56, 0.4);
+//     }
+// }
+
+// .ir-btn-disabled {
+//     background-color: rgba(228, 230, 231, 0.5);
+//     border: solid 1px rgba(178, 184, 186, 0.75);
+//     color: rgba(35, 50, 56, 0.4);
+//     pointer-events: none;
+// }
+// .ir-btn-disabled-fake {
+//     background-color: rgba(228, 230, 231, 0.5);
+//     border: solid 1px rgba(178, 184, 186, 0.75);
+//     color: rgba(35, 50, 56, 0.4);
+//     cursor: default;
+// }
+
+.ir-btn-neutral-outline {
+    background-color: $transparent;
+    border-color: $gray-blue-light;
+    color: $gray-blue-dark;
+    text-align: center;
+    &:hover {
+        background-color: $accent-lighter;
+        border-color: $gray-blue-medium;
+        color: $gray-blue-dark;
+    }
+    &:focus {
+        background-color: $accent-lighter;
+        border-color: $gray-blue-medium;
+        box-shadow: 0 0 10px 0 $accent-dark;
+        color: $gray-blue-dark;
+    }
+    &:active:not([disabled]) {
+        background-color: $accent-light;
+        border-color: $gray-blue-darkest;
+        color: $gray-darkest;
+        .v-plus-icon {
+            color: $gray-darkest;
+        }
+    }
+    &:disabled {
+        cursor: not-allowed;
+        background-color: rgba(228, 230, 231, 0.5);
+        border: solid 1px rgba(178, 184, 186, 0.75);
+        color: rgba(35, 50, 56, 0.4);
+    }
+}
+
+// .ir-btn-white-outline {
+//     background-color: $transparent;
+//     border-color: $white;
+//     color: $white;
+//     text-align: center;
+//     padding: 0 15px;
+//     &:hover {
+//         background-color: $accent-lighter;
+//         border-color: $gray-blue-medium;
+//         color: $gray-blue-dark;
+//     }
+// }
+
+// .it-plus-icon {
+//     color: $accent-dark;
+//     &:hover {
+//         color: $accent-dark;
+//     }
+// }
+// button[disabled] .v-plus-icon, html input[disabled] .v-plus-icon, button[disabled] i {
+//     color: rgba(35, 50, 56, 0.4) !important;
+// }
+
+// .v-btn-link {
+//     height: 20px;
+//     background: transparent;
+//     border: none;
+//     color: #ffffff;
+//     text-decoration: underline;
+//     margin: 9px 0;
+// }
+
+// .v-color-white {
+//     color: #FFF;
+// }
+// .v-accent-dark {
+//     color: $accent-dark;
+// }
+

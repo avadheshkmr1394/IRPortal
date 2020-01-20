@@ -1,0 +1,82 @@
+﻿@model bool?
+@{
+    // make use of nullable attribute values
+    var yesSelected = Model.HasValue && Model.Value ? "active" : null;
+    var noSelected = (Model.HasValue && !Model.Value) || (!Model.HasValue && ViewData.ModelMetadata.IsNullableValueType) ? "active" : null;
+    var noSelection = !Model.HasValue ? "active" : null;
+
+    // get the name of the ID - this is to support multiple fields
+    var htmlField = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+@Html.HiddenFor(model => model)
+<div id="yesSelected" class="btn-group" data-toggle="buttons">
+    <label id="lblYes" class="btn btn-success">
+        <input type="radio" class="bool-@htmlField" onchange="clickSwitch('yes')" /> Yes
+    </label>
+    <label id="lblBlank" class="btn btn-default" style="width:44px;height:34px;margin-top:1px">
+        <input type="radio" class="bool-@htmlField" onchange="clickSwitch('yes')" />&nbsp;
+    </label>
+</div>
+<div id="noSelected" class="btn-group" data-toggle="buttons">
+    <label id="lblBlank1" class="btn btn-default" style="width:44px;height:34px;margin-top:1px">
+        <input type="radio" class="bool-@htmlField" onchange="clickSwitch('no')" />&nbsp
+    </label>
+    <label id="lblNo" class="btn btn-default">
+        <input type="radio" class="bool-@htmlField" onchange="clickSwitch('no')" /> No
+    </label>
+</div>
+
+<script>
+    $(document).ready(function () {
+        if ("@yesSelected" == "active") {
+            $('#lblYes').addClass("active");
+            $('#lblNo').removeClass("active");
+            $('#lblBlank').removeClass("active");
+            $('#lblBlank1').removeClass("active");
+            $('#yesSelected').show();
+            $('#noSelected').hide();
+        } else {
+            $('#lblBlank').removeClass("active");
+            $('#lblBlank1').removeClass("active");
+            $('#lblYes').removeClass("active");
+            $('#lblNo').addClass("active");
+            $('#yesSelected').hide();
+            $('#noSelected').show();
+        }
+        if ("@noSelected" == "active") {
+            $('#lblBlank').removeClass("active");
+            $('#lblBlank1').removeClass("active");
+            $('#lblYes').removeClass("active");
+            $('#lblNo').addClass("active");
+            $('#noSelected').show();
+            $('#yesSelected').hide();
+        } else {
+            $('#lblBlank').removeClass("active");
+            $('#lblBlank1').removeClass("active");
+            $('#lblYes').addClass("active");
+            $('#lblNo').removeClass("active");
+            $('#noSelected').hide();
+            $('#yesSelected').show();
+        }
+    });
+
+    var clickSwitch = function myfunction(isSelected) {
+        if (isSelected == 'yes') {
+            $('#lblBlank').removeClass("active");
+            $('#lblBlank1').removeClass("active");
+            $('#lblYes').removeClass("active");
+            $('#lblNo').addClass("active");
+            $('#@htmlField').val(false);
+            $('#yesSelected').hide();
+            $('#noSelected').show();
+        } else if (isSelected == 'no') {
+            $('#lblBlank').removeClass("active");
+            $('#lblBlank1').removeClass("active");
+            $('#lblYes').addClass("active");
+            $('#lblNo').removeClass("active");
+            $('#@htmlField').val(true);
+            $('#noSelected').hide();
+            $('#yesSelected').show();
+        }
+    }
+</script>

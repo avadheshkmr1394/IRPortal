@@ -1,0 +1,60 @@
+{
+  "name": "portal",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@1stquad/react-bootstrap-datetimepicker": "^1.0.22",
+    "axios": "^0.18.1",
+    "axios-cache-adapter": "^2.3.0",
+    "combine-section-reducers": "^1.0.6",
+    "date-arithmetic": "^3.1.0",
+    "downloadjs": "^1.4.7",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "i18next": "^15.0.6",
+    "i18next-xhr-backend": "^2.0.1",
+    "immutability-helper": "^3.0.0",
+    "json-server": "^0.15.0",
+    "moment": "^2.24.0",
+    "npm": "^6.12.1",
+    "react": "^16.8.3",
+    "react-big-calendar": "^0.20.3",
+    "react-bootstrap": "^1.0.0-beta.10",
+    "react-bootstrap-dialog": "^0.13.0",
+    "react-datepicker": "^2.8.0",
+    "react-dom": "^16.8.3",
+    "react-i18next": "^10.3.0",
+    "react-modal": "^3.9.1",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-search-box": "^2.0.1",
+    "react-spinners": "^0.5.3",
+    "react-table": "^6.9.2",
+    "react-validation": "^3.0.7",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-promise": "^0.6.0",
+    "redux-sequence-action": "^0.2.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "react-scripts": "2.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "postbuild": "gulp copy"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

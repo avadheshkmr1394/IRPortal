@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@Html.Partial("_ReactApp", new ViewDataDictionary
+                               {
+                                    { "PageTitle", ViewBag.Title }
+                                }
+)

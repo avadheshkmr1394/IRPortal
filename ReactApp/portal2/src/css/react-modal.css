@@ -1,0 +1,29 @@
+.modal-dialog {
+  margin-top: 150px; }
+
+.modal-header .title {
+  color: #263d88;
+  font-weight: 300;
+  font-size: 22px; }
+
+.modal-header i {
+  font-size: 22px;
+  text-align: center;
+  color: #5789fa;
+  cursor: pointer; }
+
+.ir-modal-blue-header .modal-header {
+  background: #5789fa; }
+  .ir-modal-blue-header .modal-header .title {
+    color: #fff;
+    font-weight: 300;
+    font-size: 22px; }
+  .ir-modal-blue-header .modal-header i {
+    font-size: 22px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer; }
+
+.ReactModalPortal {
+  position: absolute;
+  z-index: 99999; }

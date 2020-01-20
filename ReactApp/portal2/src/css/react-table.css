@@ -1,0 +1,75 @@
+.IRTable {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Sans Pro", sans-serif;
+  border-radius: 5px 5px 0 0; }
+
+.IRTable .ir-table {
+  flex: auto 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  border-collapse: collapse;
+  overflow: auto;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-left: none; }
+
+.IRTable .rt-thead.-header {
+  box-shadow: none;
+  height: 40px; }
+
+.ReactTable .rt-thead .rt-th {
+  line-height: 30px; }
+
+.ReactTable .rt-thead .rt-th {
+  border-right: none; }
+
+.IRTable .rt-thead {
+  background: #e7f0fe;
+  color: #566f99;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+.IRTable .ir-tr {
+  flex: 1 0 auto;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden; }
+
+.IRTable .ir-thead .ir-th {
+  padding: 0 10px;
+  position: relative;
+  border-right: 1px solid #ccc;
+  outline: none;
+  overflow: hidden;
+  align-items: center;
+  display: flex;
+  cursor: pointer; }
+
+.ReactTable .rt-thead .rt-tr {
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+
+.ReactTable .rt-tbody .rt-td {
+  border-right: none; }
+
+.ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
+  background: white; }
+
+#AttendanceTableContainer .ReactTable .rt-tbody .rt-td {
+  padding: 0;
+  height: 27px;
+  line-height: 26px; }
+
+.leave-year-header {
+  text-align: center; }
+
+#EmpLeaveContainer .ReactTable .rt-tbody .rt-td {
+  padding: 0;
+  height: 27px;
+  line-height: 26px;
+  font-size: 15px; }
+  #EmpLeaveContainer .ReactTable .rt-tbody .rt-td:nth-child(1) {
+    padding-left: 5px; }

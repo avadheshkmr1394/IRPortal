@@ -1,0 +1,13 @@
+@import "_global";
+
+input::-moz-placeholder, textarea:-moz-placeholder,
+input:-moz-placeholder, input::-moz-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder, input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, input:-moz-placeholder, textarea:-moz-placeholder {
+    font-size: 16px;
+    @media #{$bp-medium} {
+        font-size: 14px;
+    }
+    @media #{$bp-small} {
+        font-size: 14px;
+    }
+}
